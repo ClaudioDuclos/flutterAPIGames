@@ -14,7 +14,7 @@ class FirstPage extends StatelessWidget {
             onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => GamesPage()));
             },
-            child: Text("Entrar"),
+            child: Text("Let's Go"),
           ),
         ),
       ),

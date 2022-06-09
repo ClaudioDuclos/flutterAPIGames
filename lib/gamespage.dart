@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     for(var u in jsonData){
 
-      Game game = Game(u["id"], u["title"], u["genre"], u["thumbnail"]);
+      Game game = Game(u["id"], u["title"], u["genre"], u["thumbnail"], u["short_description"], u["platform"]);
 
       games.add(game);
 
@@ -73,7 +73,14 @@ class _MyHomePageState extends State<MyHomePage> {
               if(snapshot.data == null){
                 return Container(
                     child: Center(
-                      child: Text('Carregando...'),
+                      child: Text('Loading Games...',
+                        style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontWeight: FontWeight.w800,
+                          fontSize: 15,
+                        ),
+                      ),
+
                     )
                 );
               }
@@ -106,29 +113,158 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 
+
+
 class DescPage extends StatelessWidget {
 
   final Game game;
   DescPage(this.game);
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(game.title),
-      ),
-      body: Container(
-        child: Container(
-          child:(
-              Text(game.title)
-              //Text(game.genre)
+      backgroundColor: Colors.purple,
+      body: Stack(
+        children: [
+          Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 4,
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  height: MediaQuery.of(context).size.height / 1.5,
+                  width: MediaQuery.of(context).size.height / 1.8,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Container(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 25),
+                      child: Column(
+                        children: [
+                          //FlutterLogo(size: 100),
+                          Container(
+                              width: 100,
+                              height: 95,
+                              child: Image.asset('assets/images/white.png')
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(20),
+                            child: Text(
+                              game.title,
+                              style: TextStyle(
+                                  fontFamily: 'Montserrat', fontSize: 30, fontWeight: FontWeight.w800),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width / 1.5,
+                              child: Text(
+                                game.short_description,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.w300,
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20, right: 20),
+                            child: Container(
+                              child: Divider(color: Colors.purple),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 15),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width / 1.5,
+                              child: Text(
+                                'Genre: ${game.genre}',
+                                textAlign: TextAlign.center,
+                                style:
+                                TextStyle(fontSize: 20, color: Colors.grey[600], fontFamily: 'Montserrat', fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width / 1.5,
+                              child: Text(
+                                'Platform: ${game.platform}',
+                                textAlign: TextAlign.center,
+                                style:
+                                TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600, fontFamily:'Montserrat'),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 200,
+                            height: 75,
+                            padding: const EdgeInsets.only(top: 30),
+                              child: RaisedButton(
+                                color: Colors.purple,
+                                textColor: Colors.white,
+                                hoverColor: Colors.purple[300],
+                                onPressed: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => GamesPage()));
+                                },
+                                child: Text("Back"),
+                              ),
+
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
+
+          Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 7,
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  height: MediaQuery.of(context).size.height / 4,
+                  width: MediaQuery.of(context).size.height / 3,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 25.0,
+                        spreadRadius: 2,
+                      )
+                    ],
+                  ),
+
+                  child: Image.network(game.thumbnail, height: 100),
+                ),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
-
 }
+
+
 
 
 class Game{
@@ -136,7 +272,9 @@ class Game{
   final String title;
   final String genre;
   final String thumbnail;
+  final String short_description;
+  final String platform;
 
-  Game(this.id, this.title, this.genre, this.thumbnail);
+  Game(this.id, this.title, this.genre, this.thumbnail, this.short_description, this.platform);
 
 }
