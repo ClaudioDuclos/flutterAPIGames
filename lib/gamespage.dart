@@ -21,7 +21,7 @@ class GamesPage extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: const MyHomePage(title: 'Lista de Jogos'),
+      home: const MyHomePage(title: 'Free Games - List'),
     );
   }
 }
@@ -78,6 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           fontFamily: 'Montserrat',
                           fontWeight: FontWeight.w800,
                           fontSize: 15,
+                          color: Colors.purple,
                         ),
                       ),
 
@@ -90,12 +91,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   itemBuilder: (BuildContext context, int id){
                     return ListTile(
                       leading: CircleAvatar(
+                        radius: 35,
                         backgroundImage: NetworkImage(
                             snapshot.data[id].thumbnail
                         ),
                       ),
-                      title: Text(snapshot.data[id].title),
-                      subtitle: Text(snapshot.data[id].genre),
+                      title: Text(snapshot.data[id].title,
+                      style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.w600,
+                      color: Colors.purple),),
+                      subtitle: Text(snapshot.data[id].genre,
+                        style: TextStyle(fontFamily: 'Montserrat'),),
                       onTap:(){
                         Navigator.push(context,
                             //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => DescPage()));
@@ -144,15 +149,15 @@ class DescPage extends StatelessWidget {
                   ),
                   child: Container(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 25),
+                      padding: const EdgeInsets.only(top: 110),
                       child: Column(
                         children: [
                           //FlutterLogo(size: 100),
-                          Container(
-                              width: 100,
-                              height: 95,
-                              child: Image.asset('assets/images/white.png')
-                          ),
+                          // Container(
+                          //     width: 100,
+                          //     height: 95,
+                          //     child: Image.asset('assets/images/white.png')
+                          // ),
                           Padding(
                             padding: const EdgeInsets.all(20),
                             child: Text(
@@ -162,7 +167,7 @@ class DescPage extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(5),
                             child: Container(
                               width: MediaQuery.of(context).size.width / 1.5,
                               child: Text(
@@ -177,13 +182,13 @@ class DescPage extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 20, right: 20),
+                            padding: const EdgeInsets.only(left: 20, right: 20, top: 8),
                             child: Container(
                               child: Divider(color: Colors.purple),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 15),
+                            padding: const EdgeInsets.only(top: 10),
                             child: Container(
                               width: MediaQuery.of(context).size.width / 1.5,
                               child: Text(
@@ -197,7 +202,7 @@ class DescPage extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(top: 10),
                             child: Container(
-                              width: MediaQuery.of(context).size.width / 1.5,
+                              width: MediaQuery.of(context).size.width / 1,
                               child: Text(
                                 'Platform: ${game.platform}',
                                 textAlign: TextAlign.center,
@@ -217,9 +222,23 @@ class DescPage extends StatelessWidget {
                                 onPressed: (){
                                   Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => GamesPage()));
                                 },
-                                child: Text("Back"),
+                                child: Text("See more"),
                               ),
-
+                          ),
+                          Container(
+                            width: 200,
+                            height: 75,
+                            //
+                            padding: const EdgeInsets.only(top: 30),
+                            child: RaisedButton(
+                              color: Colors.purple,
+                              textColor: Colors.white,
+                              hoverColor: Colors.purple[300],
+                              onPressed: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => GamesPage()));
+                              },
+                              child: Text("Back"),
+                            ),
                           ),
                         ],
                       ),

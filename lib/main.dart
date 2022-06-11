@@ -14,9 +14,9 @@ class App extends StatelessWidget {
     );
 
     return MaterialApp(
-      title: 'Introduction screen',
+      title: '• FreeGames - Onboarding',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(primarySwatch: Colors.purple),
       home: OnBoardingPage(),
     );
   }
@@ -52,10 +52,10 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
 
   @override
   Widget build(BuildContext context) {
-    const bodyStyle = TextStyle(fontSize: 19.0);
+    const bodyStyle = TextStyle(fontSize: 16.0, fontFamily: 'Montserrat');
 
     const pageDecoration = const PageDecoration(
-      titleTextStyle: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
+      titleTextStyle: TextStyle(fontSize: 32.0, fontWeight: FontWeight.w800, fontFamily: 'Montserrat'),
       bodyTextStyle: bodyStyle,
       bodyPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
       pageColor: Colors.white,
@@ -80,31 +80,31 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         child: ElevatedButton(
           child: const Text(
             'Just get me to the Games!',
-            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w800, fontFamily: 'Montserrat'),
           ),
           onPressed: () => _onIntroEnd(context),
         ),
       ),
       pages: [
         PageViewModel(
-          title: "Fractional shares",
+          title: "Our name is kinda generic",
           body:
-          "Instead of having to buy an entire share, invest any amount you want.",
-          image: Image.network('https://img.freepik.com/free-vector/office-concept-illustration_114360-1248.jpg?w=2000'),
+          "But we offer a very good list of free \ngames for you to enjoy!",
+          image: Image.asset('assets/images/step1.png'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Learn as you go",
+          title: "It's really simple",
           body:
-          "Download the Stockpile app and master the market with our mini-lesson.",
-          image: _buildImage('img2.jpg'),
+          "Just explore our list and select one of the \ngames to see the details.",
+          image: Image.asset('assets/images/step2.png'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Kids and teens",
+          title: "Alright, let's go",
           body:
-          "Kids and teens can track their stocks 24/7 and place trades that you approve.",
-          image: _buildImage('img3.jpg'),
+          "Hope you'll like it. Project made by \nClaudio Campos and José Matheus Krapf",
+          image: Image.asset('assets/images/step3.png'),
           decoration: pageDecoration,
         ),
         // PageViewModel(
@@ -178,14 +178,14 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           : const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
       dotsDecorator: const DotsDecorator(
         size: Size(10.0, 10.0),
-        color: Colors.white,
+        color: Colors.purple,
         activeSize: Size(22.0, 10.0),
         activeShape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(25.0)),
         ),
       ),
       dotsContainerDecorator: const ShapeDecoration(
-        color: Colors.purple,
+        color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),
