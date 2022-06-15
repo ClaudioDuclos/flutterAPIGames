@@ -5,7 +5,7 @@
 
    <application
 
-        android:label="freegames"
+        android:label="Free Games"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
 

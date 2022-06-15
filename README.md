@@ -1,16 +1,12 @@
-# freegames
+# freegames (nome provisório)
 
-Projeto acadêmico de Flutter.
 
-## Getting Started
+Projeto acadêmico de Flutter feito por Claudio Campos e José Matheus Krapf (5ºADS Noturno)
 
-This project is a starting point for a Flutter application.
+## Notas Iniciais
 
-A few resources to get you started if this is your first Flutter project:
+Acompanhe nosso projeto acadêmico utilizando Flutter. O conceito inicial do aplicativo é organizar através de listagens e filtros jogos gratuitos. A disponibilidade destes dados é derivada de uma API com sua chave de autenticação. Seu escopo inicial estrutura apenas uma ListView simples com as informações de Título, Gênero e Imagem. Possibilitando também o acesso à página própria do jogo (através do comando OnTap).
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Em seu primeiro modelo, as informações estão organizadas na main.dart principal, sendo possivelmente separada em diferentes páginas em breve para melhor controle do projeto.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+*OBS: O carregamento das imagens é um problema derivado da forma de renderização utilizada pelo Flutter nativo. Neste caso, executando através da plataforma Chrome é possível utilizando um renderer em html para visualização dessas imagens. Entretanto, atualmente em APK (Android), sua visualização é funcional.
