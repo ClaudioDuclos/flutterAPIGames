@@ -1,4 +1,4 @@
-# freegames (nome provisório)
+# freegames
 
 
 Projeto acadêmico de Flutter feito por Claudio Campos e José Matheus Krapf (5ºADS Noturno)
